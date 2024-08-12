@@ -8,22 +8,19 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if head is not None:
             if head.next is not None:
-                list = []
-                list.append(head)
-                pointer = head.next
-                list.append(pointer)
+                i = 0
                 while True:
-                    n_pointer = pointer.next
-                    if n_pointer is None:
+                    if head is not None and type(head.val) == int:
+                        head.val = "x"+str(i)
+                        head = head.next
+                        i+=1
+                    elif head is None:
                         return False
                         break
-                    elif n_pointer in list:
-                        pos = list.index(n_pointer)
+                    else:
+                        pos = int(head.val[1:])
                         return True
                         break
-                    else:
-                        list.append(n_pointer)
-                        pointer = n_pointer
             else:
                 pos = -1
                 return False
