@@ -6,23 +6,13 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        if head is not None:
-            if head.next is not None:
-                i = 0
-                while True:
-                    if head is not None and type(head.val) == int:
-                        head.val = "x"+str(i)
-                        head = head.next
-                        i+=1
-                    elif head is None:
-                        return False
-                        break
-                    else:
-                        pos = int(head.val[1:])
-                        return True
-                        break
-            else:
-                pos = -1
+        while True:
+            if head is not None and type(head.val) == int:
+                head.val = "x"
+                head = head.next
+            elif head is None:
                 return False
-        else:
-            return False
+                break
+            else:
+                return True
+                break
