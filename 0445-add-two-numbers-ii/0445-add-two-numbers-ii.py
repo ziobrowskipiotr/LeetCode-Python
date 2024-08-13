@@ -7,7 +7,7 @@
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
-##         self.next = next
+#         self.next = next
 class Solution:
     def reverse_list(self, head: Optional[ListNode]) -> Optional[ListNode]:
         n_preview = head
