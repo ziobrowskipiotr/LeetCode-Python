@@ -7,34 +7,24 @@
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
         h = head
+        if right-left < 1:
+            return head
+        if left == 1:
+            node_left = None
         for i in range(right):
-            if i == left-2:
+            if i+2 == left:
                 node_left = head
-            if left-1 <= i and i <= right-1:
-                if i == left-1:
-                    if right-left < 1:
-                        return h    
-                    elif i == 0:
-                        node_left = None
-                        node_h = head
-                        prev = head
-                        cur = head.next
-                    else:
-                        node_h = head
-                        prev = head
-                        cur = head.next
-                else:
-                    nex = cur.next
-                    if node_left is not None:
-                        cur.next, node_left.next, node_h.next = prev, cur, nex
-                    else:
-                        cur.next, node_h.next = prev, nex
-                        print(cur)
-                    if i == right-1:
-                        if left == 1:
-                            return cur
-                        else:
-                            break
-                    cur, nex, prev = nex, nex.next, cur
+            elif i+1 == left:
+                node_h, prev, cur, nex = head, head, head.next, head.next.next
+            elif i+1 > left:
+                cur.next, node_h.next = prev, nex
+                cur, prev = nex, cur
+                if i+1 == right:
+                    break
+                nex = nex.next
             head = head.next
-        return h
+        if node_left is not None:
+            node_left.next = prev
+            return h
+        else:
+            return prev
