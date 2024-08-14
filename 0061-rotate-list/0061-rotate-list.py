@@ -1,4 +1,4 @@
-#######################################
+######################################
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -7,10 +7,9 @@
 class Solution:
     def number_of_nodes(self, head: Optional[ListNode],) -> Optional[int]:
         i = 0
-        h = head
-        while h is not None:
+        while head is not None:
             i+=1
-            h = h.next
+            head = head.next
         return i
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         if head is not None and head.next is not None:
