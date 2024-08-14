@@ -17,7 +17,7 @@ class Solution:
             cur = head.next
             prev = head
             num = Solution.number_of_nodes(self, head)
-            for i in range(k%num):
+            for i in range(k % num):
                 while cur.next is not None:
                     prev = prev.next
                     cur = cur.next
