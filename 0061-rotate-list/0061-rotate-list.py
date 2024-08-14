@@ -13,7 +13,7 @@ class Solution:
             h = h.next
         return i
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        if k > 0 and head is not None and head.next is not None:
+        if head is not None and head.next is not None:
             cur = head.next
             prev = head
             num = Solution.number_of_nodes(self, head)
