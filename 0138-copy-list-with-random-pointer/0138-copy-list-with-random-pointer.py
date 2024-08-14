@@ -9,8 +9,10 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+
         if head is None:
             return head
+
         h, nex = head, head
         while nex is not None:
             cp = Node(0)
@@ -33,5 +35,6 @@ class Solution:
             h, cp = h.next, cp.next
         else:
             h.next = None
+
         return copy
         
