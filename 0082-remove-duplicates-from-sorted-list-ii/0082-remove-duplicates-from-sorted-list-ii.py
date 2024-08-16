@@ -16,13 +16,14 @@ class Solution:
                 nex = cur
                 while cur.val == nex.val:
                     cur, nex = nex, nex.next
-                    if nex.next is not None:
+                    if nex is not None:
                         cur.next = None
                     else:
                         if prev is None:
                             return None
                         else:
-                            prev.next = None                   
+                            prev.next = None
+                            return head                   
                 cur, nex = nex, nex.next
                 if i == 0:
                     head = cur
