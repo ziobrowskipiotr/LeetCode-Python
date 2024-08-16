@@ -12,6 +12,7 @@ class Solution:
         nex = head.next
         prev = None
         i = 0
+
         while nex is not None:
             if cur.val == nex.val:
                 nex = cur
@@ -33,4 +34,5 @@ class Solution:
             else:
                 prev, cur, nex = cur, cur.next, nex.next
                 i = 1
+
         return head
