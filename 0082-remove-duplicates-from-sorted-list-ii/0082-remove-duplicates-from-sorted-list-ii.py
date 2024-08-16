@@ -11,7 +11,7 @@ class Solution:
         cur = head
         nex = head.next
         prev = None
-        i = 0
+        i = False
 
         while nex is not None:
             if cur.val == nex.val:
@@ -27,12 +27,12 @@ class Solution:
                             prev.next = None
                             return head
                 cur, nex = nex, nex.next
-                if i == 0:
+                if i == False:
                     head = cur
                 if prev is not None:
                     prev.next = cur
             else:
                 prev, cur, nex = cur, cur.next, nex.next
-                i = 1
+                i = True
 
         return head
