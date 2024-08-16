@@ -1,4 +1,4 @@
-#######################################
+######################################
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -25,7 +25,7 @@ class Solution:
                             return None
                         else:
                             prev.next = None
-                            return head                   
+                            return head
                 cur, nex = nex, nex.next
                 if i == 0:
                     head = cur
