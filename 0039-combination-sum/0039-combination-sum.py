@@ -8,7 +8,7 @@ class Solution:
                 return
             elif len(current_list)>0 and suma == target:
                 print(current_list)
-                result.append(current_list[:])
+                result.append(current_list.copy())
                 return
             else:
                 if suma < target:
