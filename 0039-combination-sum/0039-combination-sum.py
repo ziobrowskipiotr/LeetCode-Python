@@ -13,10 +13,8 @@ class Solution:
             else:
                 if suma < target:
                     current_list.append(candidates[i])
-                    suma += candidates[i]
-                    backtrack(current_list, i, suma)
+                    backtrack(current_list, i, suma+candidates[i])
                     current_list.pop()
-                    suma -= candidates[i]
                     backtrack(current_list, i+1, suma)
         backtrack(current_list, 0, 0)
         return result
