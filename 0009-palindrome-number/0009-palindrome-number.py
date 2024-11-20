@@ -10,6 +10,6 @@ class Solution:
             temp_x = int(temp_x/10)
             len += 1
         for i in range(int(len/2)):
-            if (int(x/(10**(len-1-i))))%10 != int((x/(10**i)))%10:
+            if int((x/pow(10, len-1-i)))%10 != int((x/pow(10, i)))%10:
                 return False
         return True
