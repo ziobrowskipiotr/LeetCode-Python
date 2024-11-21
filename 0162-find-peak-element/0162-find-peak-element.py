@@ -13,6 +13,6 @@ class Solution:
             else:
                 if nums[pivot] <= nums[pivot_right]:
                     left = pivot_right
-                elif nums[pivot] <= nums[pivot_left]:
+                else:
                     right = pivot_left
         return left
