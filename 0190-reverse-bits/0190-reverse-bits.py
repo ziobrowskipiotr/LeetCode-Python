@@ -7,11 +7,11 @@ class Solution:
             left = n & mask_left
             if right > 0:
                 n |= mask_left
-            elif right == 0:
+            else:
                 n &= ~mask_left
             if left > 0:
                 n |= mask_right
-            elif left == 0:
+            else:
                 n &= ~mask_right
             mask_right <<= 1
             mask_left >>= 1
