@@ -20,3 +20,4 @@ class Solution:
             return (merge_list[(len(merge_list)-1)//2] + merge_list[len(merge_list)//2])/2
         else:
             return merge_list[(len(merge_list)-1)//2]
+##
