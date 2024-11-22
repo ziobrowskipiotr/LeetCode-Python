@@ -2,7 +2,6 @@ class Solution:
     def search(self, nums: List[int], target: int) -> int:
         def binary_search(left, right):
             while left<=right:
-                print(left, right)
                 mid = (left+right)//2
                 if target == nums[mid]:
                     return mid
@@ -18,7 +17,6 @@ class Solution:
         right = len(nums)-1
         pivot = 0
         while left<right:
-            print(left, right)
             pivot = (left+right)//2
             if nums[pivot] < nums[pivot-1] and nums[pivot] < nums[pivot+1]:
                 break
