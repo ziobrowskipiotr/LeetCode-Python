@@ -3,16 +3,12 @@ class Solution:
         left = 0
         right = len(nums)-1
         while left<right:
-            pivot = (left+right)//2
-            pivot_left = pivot-1
-            pivot_right = pivot+1
-            if pivot_right == len(nums):
-                pivot_right = 0
-            if nums[pivot] > nums[pivot_left] and nums[pivot] > nums[pivot_right]:
+            pivot = (left+right)//2        
+            if nums[pivot] > nums[pivot-1] and nums[pivot] > nums[pivot+1]:
                 return pivot
             else:
-                if nums[pivot] <= nums[pivot_right]:
-                    left = pivot_right
+                if nums[pivot] <= nums[pivot+1]:
+                    left = pivot+1
                 else:
-                    right = pivot_left
+                    right = pivot-1
         return left
