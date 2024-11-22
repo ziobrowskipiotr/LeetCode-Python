@@ -7,10 +7,7 @@ class Solution:
         while left<=right:
             pivot = (left+right)//2
             if nums[pivot] == target:
-                if pivot == 0:
-                    result[0] = pivot
-                    break
-                elif nums[pivot-1] != target:
+                if pivot == 0 or nums[pivot-1] != target:
                     result[0] = pivot
                     break
                 else:
@@ -28,10 +25,7 @@ class Solution:
         while left<=right:
             pivot = (left+right)//2
             if nums[pivot] == target:
-                if pivot == len(nums)-1:
-                    result[1] = pivot
-                    break
-                elif nums[pivot+1] != target:
+                if pivot == len(nums)-1 or nums[pivot+1] != target:
                     result[1] = pivot
                     break
                 else:
