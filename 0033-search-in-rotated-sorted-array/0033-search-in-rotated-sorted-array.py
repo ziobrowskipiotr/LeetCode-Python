@@ -16,22 +16,17 @@ class Solution:
         left = 0
         right = len(nums)-1
         pivot = 0
-        while left<right:
+        while left<=right:
             pivot = (left+right)//2
-            if nums[pivot] < nums[pivot-1] and nums[pivot] < nums[pivot+1]:
-                break
+            if nums[pivot] > nums[-1]:
+                left = pivot+1
             else:
-                if nums[pivot] > nums[-1]:
-                    left = pivot+1
-                else:
-                    right = pivot-1
-        else:
-            pivot = left
+                right = pivot-1
+
         if target <= nums[-1]:
-            left = pivot
             right = len(nums)-1
             return binary_search(left, right)
         else:
+            right = left-1
             left = 0
-            right = pivot-1
             return binary_search(left, right)
