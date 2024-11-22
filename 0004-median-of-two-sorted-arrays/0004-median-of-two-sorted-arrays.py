@@ -17,8 +17,6 @@ class Solution:
                 merge_list += nums2[right:]
 
         if len(merge_list)%2 == 0:
-            print(merge_list)
             return (merge_list[(len(merge_list)-1)//2] + merge_list[len(merge_list)//2])/2
         else:
-            print(merge_list)
             return merge_list[(len(merge_list)-1)//2]
