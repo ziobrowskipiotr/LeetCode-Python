@@ -12,13 +12,8 @@ class Solution:
 			current_area = high*(right-left)
 			if current_area > max_area:
 				max_area = current_area
-			if height[left+1] == height[right-1]:
-				if height[left]>=height[right]:
-					right -= 1
-				else:
-					left += 1
-			elif height[left+1] > height[right-1]:
-				left += 1
-			else:
+			if height[left] >= height[right]:
 				right -= 1
+			else:
+				left += 1
 		return max_area
