@@ -11,9 +11,7 @@ class Solution:
                 return
             else:
                 for c in range(n):
-                    if c in col or row-c in neg_diag or row+c in pos_diag:
-                        continue
-                    else:
+                    if c not in col and row-c not in neg_diag and row+c not in pos_diag:
                         col.add(c)
                         neg_diag.add(row-c)
                         pos_diag.add(row+c)
@@ -21,6 +19,10 @@ class Solution:
                         col.remove(c)
                         neg_diag.remove(row-c)
                         pos_diag.remove(row+c)
+                    elif c == n-1:
+                        return
+                    else:
+                        continue
         backtrack(0)
         return result
 		
