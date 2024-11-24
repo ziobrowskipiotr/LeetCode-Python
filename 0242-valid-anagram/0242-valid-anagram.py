@@ -4,7 +4,6 @@ class Solution:
         if len(s) != len(t):
             return False
         map_s = defaultdict(int)
-        map_t = defaultdict(int)
         for letter in s:
             map_s[letter] += 1
         for letter in t:
