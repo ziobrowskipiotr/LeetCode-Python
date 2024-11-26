@@ -33,7 +33,6 @@ class Solution:
                 result = sign*result
                 result += stack.pop()
                 operand = 0
-                sign = 1
             
             else:
                 continue
