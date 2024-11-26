@@ -2,18 +2,18 @@ class MinStack:
 
     def __init__(self):
         self.stack = []
-        self.min_stack = []
+        self.min_map = collections.defaultdict(list)
 
     def push(self, val: int) -> None:
+        if not self.stack or val < self.min_map[self.stack[-1]][-1]:
+            self.min_map[val] += [val]
+        else:
+            self.min_map[val] += [self.min_map[self.stack[-1]][-1]]    
         self.stack.append(val)
-        if not self.min_stack or val <= self.min_stack[-1]:
-            self.min_stack.append(val)
-        return None
 
     def pop(self) -> None:
         if self.stack:
-            if self.stack[-1] == self.min_stack[-1]:
-                self.min_stack.pop()
+            self.min_map[self.stack[-1]].pop()
             self.stack.pop()
         return None
 
@@ -24,8 +24,8 @@ class MinStack:
             return None
 
     def getMin(self) -> int:
-        if self.min_stack:
-            return self.min_stack[-1]
+        if self.stack:
+            return self.min_map[self.stack[-1]][-1]
         else:
             return None
 
