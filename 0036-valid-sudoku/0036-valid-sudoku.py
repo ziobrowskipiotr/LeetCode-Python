@@ -8,14 +8,6 @@ class Solution:
             rows[i] = set()
             squares[i] = set()
 
-        def little_squares(i):
-            if i<3:
-                return 0
-            elif i<6:
-                return 1
-            else:
-                return 2
-
         for i in range(len(board)):
             for j in range(len(board[0])):
                 if board[i][j] == ".":
@@ -28,8 +20,8 @@ class Solution:
                     return False
                 else:
                     columns[j].add(board[i][j])
-                if board[i][j] in squares[3*little_squares(i)+little_squares(j)]:
+                if board[i][j] in squares[3*(i//3)+j//3]:
                     return False
                 else:
-                    squares[3*little_squares(i)+little_squares(j)].add(board[i][j])
+                    squares[3*(i//3)+j//3].add(board[i][j])
         return True
