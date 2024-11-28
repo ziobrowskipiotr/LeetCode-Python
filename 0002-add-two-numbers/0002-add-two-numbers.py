@@ -6,17 +6,16 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        current_node = ListNode()
-        first_node = current_node
+        prev_node = ListNode()
+        current_node = prev_node
         add_number = 0
-        while l1 != None or l2 != None or add_number:
-            cur_val1 = l1.val if l1 != None else 0
-            cur_val2 = l2.val if l2 != None else 0
-            new_node = ListNode((cur_val1 + cur_val2 + add_number)%10)
-            add_number = (cur_val1 + cur_val2 + add_number)//10
+        while l1 != None or l2 != None or add_number > 0:
+            l1_val = l1.val if l1 else 0
+            l2_val = l2.val if l2 else 0
+            new_node = ListNode((l1_val + l2_val + add_number)%10)
+            add_number = (l1_val + l2_val + add_number)//10
             current_node.next = new_node
             current_node = new_node
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
-
-        return first_node.next
+        return prev_node.next
