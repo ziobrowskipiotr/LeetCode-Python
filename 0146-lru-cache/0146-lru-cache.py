@@ -50,14 +50,13 @@ class LRUCache:
         elif self.actual_cap < self.capacity:
             current_node = Node(key, value, prev=self.MRU)
             self.MRU.next = current_node
-            self.MRU = current_node
-            self.mapping[key] = current_node
+            self.MRU = self.MRU.next
+            self.mapping[key] = self.MRU
             self.actual_cap += 1
         elif self.actual_cap == self.capacity:
             if self.capacity == 1:
                 self.mapping.pop(self.LRU.key)
-                self.LRU.key = key
-                self.LRU.value = value
+                self.LRU.key, self.LRU.value = key, value
                 self.mapping[key] = self.LRU
             else:
                 self.mapping.pop(self.LRU.key)
