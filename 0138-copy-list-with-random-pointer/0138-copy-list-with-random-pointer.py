@@ -28,6 +28,8 @@ class Solution:
                 copy_head.next = new_node
                 copy_head = copy_head.next
                 new_node = Node(0)
+            else:
+                break
 		
         copy_head = result_list
 
