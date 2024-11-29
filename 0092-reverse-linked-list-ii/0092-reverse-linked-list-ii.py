@@ -6,25 +6,54 @@
 #         self.next = next
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
-        h = head
-        if right-left < 1:
+
+        if left == right:
             return head
+
+        current_node = head
+        left_node = head
+        right_node = head
+        before_left = head
+        after_right = head
+        prev_node = head
+        ix = 1
+        
+        while current_node is not None:
+            if ix == left-1:
+                before_left = current_node
+                current_node = current_node.next
+            elif ix == right+1:
+                after_right = current_node
+                current_node = current_node.next
+            elif ix == left:
+                prev_node = current_node
+                left_node = current_node
+
+                temp_node = current_node
+                current_node = current_node.next
+                temp_node.next = None
+            elif ix > left and ix < right:
+                temp_node = current_node
+                current_node = current_node.next
+                temp_node.next = prev_node
+                prev_node = temp_node
+            elif ix == right:
+                right_node = current_node
+                temp_node = current_node
+
+                current_node = current_node.next
+                temp_node.next = prev_node
+                prev_node = temp_node
+            else:
+                current_node = current_node.next
+            ix += 1
+
+        if left != 1:
+            before_left.next = right_node
+        if right != ix-1:
+            left_node.next = after_right
+
         if left == 1:
-            node_left = None
-        for i in range(right):
-            if i+2 == left:
-                node_left = head
-            elif i+1 == left:
-                node_h, prev, cur, nex = head, head, head.next, head.next.next
-            elif i+1 > left:
-                cur.next, node_h.next = prev, nex
-                cur, prev = nex, cur
-                if i+1 == right:
-                    break
-                nex = nex.next
-            head = head.next
-        if node_left is not None:
-            node_left.next = prev
-            return h
+            return right
         else:
-            return prev
+            return head
