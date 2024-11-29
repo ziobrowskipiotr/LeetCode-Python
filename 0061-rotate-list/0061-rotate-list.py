@@ -8,12 +8,13 @@ class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         if not head:
             return head
-        first_node = head
-        current_node = head
         list_len = self.number_of_nodes(head)
-        ix = 1
         if k%list_len == 0:
             return head
+        first_node = head
+        current_node = head
+        
+        ix = 1
         while current_node is not None:
             if ix == list_len-(k%list_len):
                 temp_node = current_node
@@ -29,4 +30,3 @@ class Solution:
                 ix += 1
                 current_node = current_node.next
         return first_node
-					
