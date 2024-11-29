@@ -54,6 +54,6 @@ class Solution:
             left_node.next = after_right
 
         if left == 1:
-            return right
+            return right_node
         else:
             return head
