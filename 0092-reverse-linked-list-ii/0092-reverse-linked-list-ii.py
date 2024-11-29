@@ -9,23 +9,23 @@ class Solution:
 
         if not head:
             return head
-        
-        cur, prev = head, None
-
+	
+        prev, cur = None, head
+	
         while left > 1:
             prev = cur
             cur = cur.next
             left -= 1
             right -= 1
 
-        tail, con = cur, prev
-        while right:
-            third = cur.next
+        con, tail = prev, cur
+        while right > 0:
+            temp = cur.next
             cur.next = prev
             prev = cur
-            cur = third
+            cur = temp
             right -= 1
-        
+	
         tail.next = cur
         if con:
             con.next = prev
