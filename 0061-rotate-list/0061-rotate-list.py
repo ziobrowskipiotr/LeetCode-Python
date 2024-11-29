@@ -1,26 +1,32 @@
-# ####################
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
-    def number_of_nodes(self, head: Optional[ListNode],) -> Optional[int]:
+    def number_of_nodes(self, head: Optional[ListNode]) -> int:
         i = 0
         while head is not None:
-            i+=1
             head = head.next
+            i += 1
         return i
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        if head is not None and head.next is not None:
-            cur = head.next
-            prev = head
-            num = Solution.number_of_nodes(self, head)
-            for i in range(k % num):
-                while cur.next is not None:
-                    prev = prev.next
-                    cur = cur.next
-                cur.next, prev.next = head, None
-                head, prev, cur = cur, cur, cur.next
-        return head
-                          
+        if not head:
+            return head
+        first_node = head
+        current_node = head
+        list_len = self.number_of_nodes(head)
+        ix = 1
+        if k%list_len == 0:
+            return head
+        while current_node is not None:
+            if ix == list_len-(k%list_len):
+                temp_node = current_node
+                current_node = current_node.next
+                first_node = current_node
+                temp_node.next = None
+                while current_node.next is not None:
+                    current_node = current_node.next
+                else:
+                    current_node.next = head
+                break
+            else:
+                ix += 1
+                current_node = current_node.next
+        return first_node
+					
