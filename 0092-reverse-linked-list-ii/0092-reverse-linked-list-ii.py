@@ -26,10 +26,9 @@ class Solution:
             cur = third
             right -= 1
         
+        tail.next = cur
         if con:
             con.next = prev
-            tail.next = cur
             return head
         else:
-            tail.next = cur
             return prev
