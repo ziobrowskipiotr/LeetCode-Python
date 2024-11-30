@@ -8,14 +8,14 @@ class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         result = [k, None]
         def dfs(root):
-            if root.left:
+            if not result[1] and root.left:
                 dfs(root.left)
                 result[0] -= 1
 
-            if result[0] == 1:
+            if not result[1] and result[0] == 1:
                 result[1] = root.val
 
-            if root.right:
+            if not result[1] and root.right:
                 result[0] -= 1
                 dfs(root.right)
 
