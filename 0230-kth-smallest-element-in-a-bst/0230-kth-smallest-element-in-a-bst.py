@@ -15,7 +15,7 @@ class Solution:
             if result[0] == 1:
                 result[1] = root.val
 
-            elif root.right:
+            if root.right:
                 result[0] -= 1
                 dfs(root.right)
 
