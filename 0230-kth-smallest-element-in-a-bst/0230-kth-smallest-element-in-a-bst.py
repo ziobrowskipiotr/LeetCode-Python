@@ -12,7 +12,7 @@ class Solution:
                 dfs(root.left)
                 result[0] -= 1
 
-            if not result[1] and result[0] == 1:
+            if result[0] == 1:
                 result[1] = root.val
 
             if not result[1] and root.right:
