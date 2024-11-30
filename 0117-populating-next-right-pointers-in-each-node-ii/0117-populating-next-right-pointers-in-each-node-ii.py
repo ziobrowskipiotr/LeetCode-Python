@@ -13,23 +13,23 @@ class Solution:
         if not root:
             return root
 		
-        def connecting(prev, child_node, left):
+        def connecting(prev, child_node, most_left):
             if child_node:
                 if prev:
                     prev.next = child_node
                 else:
-                    left = child_node
+                    most_left = child_node
                 prev = child_node
 			
-            return prev, left
+            return prev, most_left
 
-        left = root
-        while left:
-            prev, cur = None, left
-            left = None
+        most_left = root
+        while most_left:
+            prev, cur = None, most_left
+            most_left = None
             while cur:
-                prev, left = connecting(prev, cur.left, left)
-                prev, left = connecting(prev, cur.right, left)
+                prev, most_left = connecting(prev, cur.left, most_left)
+                prev, most_left = connecting(prev, cur.right, most_left)
                 cur = cur.next
         return root
 				
