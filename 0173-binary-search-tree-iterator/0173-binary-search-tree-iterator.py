@@ -1,4 +1,4 @@
-# Definition for a binary tree node.
+#Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
@@ -7,20 +7,20 @@
 class BSTIterator:
 
     def __init__(self, root: Optional[TreeNode]):
-        self.nodes_lst = []
+        self.nodes_list = []
         def inorder(root):
             if not root:
                 return
             inorder(root.left)
-            self.nodes_lst.append(root.val)
+            self.nodes_list.append(root.val)
             inorder(root.right)
         inorder(root)
 
     def next(self) -> int:
-        return self.nodes_lst.pop(0) if self.nodes_lst else False
+        return self.nodes_list.pop(0) if self.nodes_list else False
 
     def hasNext(self) -> bool:
-        return True if self.nodes_lst else False
+        return True if self.nodes_list else False
         
 
 
