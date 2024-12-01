@@ -15,7 +15,7 @@ class Solution:
             right = postorder(root.right)
             if not self.result:
                 print(root.val, left, right)
-                if (left == p.val and root.val == q.val) or (left == q.val and root.val == p.val) or (right == p.val and root.val == q.val) or (right == q.val and root.val == p.val) or (left == p.val and right == q.val) or (left == q.val and right == p.val):
+                if p.val in (left, right, root.val) and q.val in (left, right, root.val):
                     self.result = root
                     return None
                 if left in (p.val, q.val):
