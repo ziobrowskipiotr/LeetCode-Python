@@ -1,7 +1,7 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         visit_set = set()
-        neighbors = collections.deque()
+        neighbors = []
         islands = 0
         rows = len(grid)
         columns = len(grid[0])
@@ -11,7 +11,7 @@ class Solution:
             visit_set.add((r,c))
             neighbors.append((r,c))
             while neighbors:
-                row, col = neighbors.popleft()
+                row, col = neighbors.pop()
                 for dr, dc in directions:
                     r, c = row+dr, col+dc
                     if r in range(rows) and c in range(columns) and (r,c) not in visit_set and grid[r][c] == "1":
