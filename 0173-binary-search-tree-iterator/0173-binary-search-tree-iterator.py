@@ -17,13 +17,10 @@ class BSTIterator:
         inorder(root)
 
     def next(self) -> int:
-        return self.nodes_list.pop(0)
+        return self.nodes_list.pop(0) if self.nodes_list else False
 
     def hasNext(self) -> bool:
-        if self.nodes_list:
-            return True
-        else:
-            return False
+        return True if self.nodes_list else False
         
 
 
