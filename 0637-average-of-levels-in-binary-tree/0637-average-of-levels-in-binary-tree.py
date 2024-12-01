@@ -6,18 +6,13 @@
 #         self.right = right
 class Solution:
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
-        level_set = set()
-        result = []
+        level_map = collections.defaultdict(list)
         def dfs(root, k):
             if not root:
                 return
-            if k in level_set:
-                result[k] += [root.val]
-            else:
-                level_set.add(k)
-                result.append([root.val])
+            level_map[k] += [root.val]
             dfs(root.left, k+1)
             dfs(root.right, k+1)
         
         dfs(root, 0)
-        return [mean(cur_list) for cur_list in result]
+        return [mean(cur_list) for cur_list in level_map.values()]
