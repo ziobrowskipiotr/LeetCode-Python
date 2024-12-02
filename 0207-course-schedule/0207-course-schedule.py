@@ -1,7 +1,5 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        if not prerequisites:
-            return True
         courses_map = {i:[] for i in range(numCourses)}
         cycle_set, courses_set = set(), set()
         for pre in prerequisites:
@@ -24,4 +22,3 @@ class Solution:
             if not dfs(i):
                 return False
         return True
-            
