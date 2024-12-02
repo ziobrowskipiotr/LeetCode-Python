@@ -2,12 +2,10 @@ class Solution:
     def solve(self, board: List[List[str]]) -> None:
         if not board:
             return board
-        visit_set = set()
         rows = len(board)
         columns = len(board[0])
         directions = [(-1,0), (1,0), (0,-1), (0,1)]
         def dfs(row, col):
-            visit_set.add((row, col))
             board[row][col] = "T"
             for dr, dc in directions:
                 r, c = row+dr, col+dc
