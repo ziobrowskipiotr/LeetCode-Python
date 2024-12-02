@@ -18,7 +18,6 @@ class Solution:
             result_list_set.add(course)
             result_list.append(course)
             courses_set.remove(course)
-            courses_map[course] = []
             return True
         
         for i in range(numCourses):
