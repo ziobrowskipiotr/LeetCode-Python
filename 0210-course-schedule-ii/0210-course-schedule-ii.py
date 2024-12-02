@@ -1,23 +1,23 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         courses_map = {i:[] for i in range(numCourses)}
-        courses_set, result_list_set = set(), set()
+        cycle_set, courses_set = set(), set()
         result_list = []
         for el in prerequisites:
             courses_map[el[0]].append(el[1])
         
         def topological_sort(course):
-            if course in courses_set:
+            if course in cycle_set:
                 return False
-            if course in result_list_set:
+            if course in courses_set:
                 return True
-            courses_set.add(course)
-            for nex in courses_map[course]:
-                if not topological_sort(nex):
+            cycle_set.add(course)
+            for prev in courses_map[course]:
+                if not topological_sort(prev):
                     return False
-            result_list_set.add(course)
+            courses_set.add(course)
             result_list.append(course)
-            courses_set.remove(course)
+            cycle_set.remove(course)
             return True
         
         for i in range(numCourses):
