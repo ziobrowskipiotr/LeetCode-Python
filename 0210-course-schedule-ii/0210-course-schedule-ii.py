@@ -1,7 +1,5 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        if not prerequisites:
-            return [i for i in range(numCourses)]
         courses_map = {i:[] for i in range(numCourses)}
         courses_set = set()
         result_list = []
