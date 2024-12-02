@@ -3,25 +3,25 @@ class Solution:
         if not prerequisites:
             return True
         courses_map = {i:[] for i in range(numCourses)}
-        courses_set = set()
+        cycle_set, courses_set = set(), set()
         for pre in prerequisites:
             courses_map[pre[0]] += [pre[1]]
 
-        def dfs(course):
-            if course in courses_set:
+        def topological_sort(course):
+            if course in cycle_set:
                 return False
-            if courses_map[course] == []:
+            if course in courses_set:
                 return True
-            
-            courses_set.add(course)
-            for nei in courses_map[course]:
-                if not dfs(nei):
+            cycle_set.add(course)
+            for nex in courses_map[course]:
+                if not topological_sort(nex):
                     return False
-            courses_set.remove(course)
-            courses_map[course] = []
+            cycle_set.remove(course)
+            courses_set.add(course)
             return True
-    
+        
         for i in range(numCourses):
-            if not dfs(i):
+            if not topological_sort(i):
                 return False
         return True
+            
