@@ -1,3 +1,4 @@
+#1
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
         if not board:
