@@ -7,21 +7,21 @@ class Solution:
         for pre in prerequisites:
             courses_map[pre[0]] += [pre[1]]
 
-        def topological_sort(course):
+        def dfs(course):
             if course in cycle_set:
                 return False
             if course in courses_set:
                 return True
             cycle_set.add(course)
-            for nex in courses_map[course]:
-                if not topological_sort(nex):
+            for prev in courses_map[course]:
+                if not dfs(prev):
                     return False
             cycle_set.remove(course)
             courses_set.add(course)
             return True
         
         for i in range(numCourses):
-            if not topological_sort(i):
+            if not dfs(i):
                 return False
         return True
             
