@@ -1,3 +1,4 @@
+#1
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         courses_map = {i:[] for i in range(numCourses)}
