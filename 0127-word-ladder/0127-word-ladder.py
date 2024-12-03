@@ -18,9 +18,8 @@ class Solution:
                 return ix
             for i in range(len(actual_word)):
                 pattern = actual_word[:i]+"*"+actual_word[i+1:]
-                if pattern in pattern_to_word:
-                    for word in pattern_to_word[pattern]:
-                        if word not in visit_set:
-                            queue.append((word, ix+1))
-                            visit_set.add(word)
+                for word in pattern_to_word[pattern]:
+                    if word not in visit_set:
+                        queue.append((word, ix+1))
+                        visit_set.add(word)
         return 0
