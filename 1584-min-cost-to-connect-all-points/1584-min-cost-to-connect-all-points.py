@@ -1,4 +1,3 @@
-#1
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         nodes = collections.defaultdict(list)
